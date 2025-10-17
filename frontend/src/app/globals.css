@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/* Design tokens */
+:root {
+    color-scheme: light dark;
+    --bg: 249 250 251;
+    /* gray-50 */
+    --surface: 243 244 246;
+    /* gray-100 */
+    --card: 255 255 255;
+    /* white */
+    --muted: 75 85 99;
+    /* gray-600 */
+    --text: 17 24 39;
+    /* gray-900 */
+    --brand: 16 185 129;
+    /* emerald-500 */
+    --border: 203 213 225;
+    /* slate-300 */
+    --scroll-track: 229 231 235;
+    /* gray-200 */
+    --scroll-thumb: 156 163 175;
+    /* gray-400 */
+}
+
+/* Ensure dark variables apply when the HTML element has the class 'dark' */
+html.dark,
+:root.dark {
+    --bg: 17 24 39;
+    /* gray-900 */
+    --surface: 26 32 44;
+    /* slate-850 */
+    --card: 41 51 71;
+    /* slate-700 */
+    --text: 243 244 246;
+    /* gray-100 */
+    --border: 75 85 99;
+    /* gray-600 */
+    --scroll-track: 31 41 55;
+    /* gray-800 */
+    --scroll-thumb: 75 85 99;
+    /* gray-600 */
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+}
+
+/* Firefox scrollbar */
+html {
+    scrollbar-color: rgb(var(--scroll-thumb)) rgb(var(--scroll-track));
+    scrollbar-width: thin;
+}
+
+/* WebKit scrollbar */
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgb(var(--scroll-track));
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--scroll-thumb));
+    border-radius: 9999px;
+    border: 2px solid rgb(var(--scroll-track));
+}
+
+.container {
+    container-type: inline-size;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.card {
+    background-color: rgb(var(--card));
+    border-radius: 0.75rem;
+    border: 1px solid rgba(var(--border), .35);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .25), 0 4px 12px -6px rgba(0, 0, 0, .2);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: -webkit-filter 150ms ease;
+    transition: filter 150ms ease;
+    transition: filter 150ms ease, -webkit-filter 150ms ease;
+}
+
+.btn-primary {
+    background-color: rgb(var(--brand));
+    color: rgb(17 24 39);
+}
+
+.btn-primary:hover {
+    -webkit-filter: brightness(1.1);
+    filter: brightness(1.1);
+}
+
+.btn-secondary {
+    background-color: rgb(55 65 81);
+    color: rgb(243 244 246);
+}
+
+.btn-secondary:hover {
+    -webkit-filter: brightness(1.1);
+    filter: brightness(1.1);
+}
+
+.nav-link {
+    color: rgba(var(--text), .75);
+}
+
+.nav-link:hover {
+    color: rgba(var(--text), 1);
+}
+
+/* Inputs that adapt to theme */
+.input-base {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(75, 85, 99, .4);
+    padding: 0.5rem 0.75rem;
+    background-color: rgb(var(--card));
+    color: rgb(var(--text));
+}
+
+::-webkit-input-placeholder {
+    color: rgba(156, 163, 175, 1);
+}
+
+::-moz-placeholder {
+    color: rgba(156, 163, 175, 1);
+}
+
+:-ms-input-placeholder {
+    color: rgba(156, 163, 175, 1);
+}
+
+::-ms-input-placeholder {
+    color: rgba(156, 163, 175, 1);
+}
+
+::placeholder {
+    color: rgba(156, 163, 175, 1);
+}
