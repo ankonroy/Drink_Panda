@@ -4,18 +4,16 @@ import { useEffect, useState } from "react";
 const STORAGE_KEY = "dp_theme"; // "light" | "dark"
 
 export function ThemeToggle() {
-  const [mode, setMode] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const stored = (typeof window !== "undefined" &&
-      localStorage.getItem(STORAGE_KEY)) as "light" | "dark" | null;
-    const initial =
+  const [mode, setMode] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "dark";
+    const stored = localStorage.getItem(STORAGE_KEY) as "light" | "dark" | null;
+    return (
       stored ??
       (window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
-        : "light");
-    setMode(initial);
-  }, []);
+        : "light")
+    );
+  });
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -36,8 +34,3 @@ export function ThemeToggle() {
     </button>
   );
 }
-
-
-
-
-

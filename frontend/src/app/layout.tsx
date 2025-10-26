@@ -27,7 +27,7 @@ export default function RootLayout({
             backgroundColor: "rgb(var(--surface))",
           }}
         >
-          <div className="container mx-auto flex items-center justify-between px-4 py-4">
+          <div className="container mx-auto flex items-center justify-between px-4 py-4 relative">
             <Link href="/" className="inline-flex items-center gap-2">
               <span className="text-lg font-extrabold">🥤 Drink Panda</span>
             </Link>

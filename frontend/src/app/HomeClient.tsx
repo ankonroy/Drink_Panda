@@ -12,7 +12,9 @@ export default function HomeClient() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ProductCategory | "all">("all");
   const [page, setPage] = useState(1);
-  const [products, setProducts] = useState<Awaited<ReturnType<typeof getAllProducts>>>([]);
+  const [products, setProducts] = useState<
+    Awaited<ReturnType<typeof getAllProducts>>
+  >([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
