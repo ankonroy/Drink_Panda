@@ -1,0 +1,8 @@
+/node_modules
+/.git
+/storage/logs/*
+.env
+.DS_Store
+docker-compose.yml
+*.sql
+*.zip
