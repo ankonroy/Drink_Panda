@@ -1,4 +1,4 @@
-import { getAuthHeaders } from "@/lib/auth";
+import { getAuthHeaders, API_URL } from "@/lib/auth";
 
 export interface DashboardStats {
   totalProducts: number;
@@ -20,7 +20,7 @@ export interface Transaction {
 export async function getDashboardStats(): Promise<DashboardStats> {
   const headers = getAuthHeaders();
 //   console.log(headers)
-  const response = await fetch("http://localhost:8000/api/admin/dashboard", {
+  const response = await fetch(`${API_URL}/api/admin/dashboard`, {
     headers,
   });
   if (!response.ok) {
