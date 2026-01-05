@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getCart, clearCart } from "@/lib/cart";
+import { getCart } from "@/lib/cart";
 import { getCurrentUser, getAuthHeaders } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/lib/auth";

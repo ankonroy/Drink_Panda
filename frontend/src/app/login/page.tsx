@@ -64,7 +64,7 @@ export default function LoginPage() {
         </button>
       </form>
       <div className="mt-3 text-sm opacity-80">
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link className="underline" href="/register">
           register here
         </Link>
