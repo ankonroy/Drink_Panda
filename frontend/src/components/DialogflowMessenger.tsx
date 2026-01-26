@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+// import '@/types/custom.d';
 
 export default function DialogflowMessenger() {
   return (

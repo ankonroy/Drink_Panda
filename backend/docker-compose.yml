@@ -1,0 +1,12 @@
+services:
+  laravel:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    # Remove or comment out the volumes section
+    # volumes:
+    #   - .:/var/www/html
+    working_dir: /var/www/html
+    restart: unless-stopped

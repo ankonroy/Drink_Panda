@@ -1,9 +1,9 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { clearCart } from "@/lib/cart";
 
-export default function OrderSuccessPage(){
+function OrderSuccessContent() {
   const params = useSearchParams();
   const txn = params?.get('txn');
 
@@ -20,5 +20,18 @@ export default function OrderSuccessPage(){
         Continue Shopping
       </button>
     </div>
+  );
+}
+
+export default function OrderSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="card p-4">
+        <h1 className="mb-4 text-xl font-extrabold">Processing...</h1>
+        <p>Please wait while we confirm your order.</p>
+      </div>
+    }>
+      <OrderSuccessContent />
+    </Suspense>
   );
 }

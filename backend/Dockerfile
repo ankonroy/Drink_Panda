@@ -11,17 +11,27 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all Laravel files
-COPY . .
+# Copy composer files first
+COPY composer.json composer.lock ./
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --no-scripts --no-autoloader
 
-# Set proper permissions
-RUN chmod -R 775 storage bootstrap/cache
+# Copy the rest of the application
+COPY . .
 
-# Expose port (Render will use $PORT environment variable)
+# Make artisan executable and set proper permissions
+RUN chmod +x artisan && \
+    chmod -R 775 storage bootstrap/cache
+
+# Generate optimized autoloader
+RUN composer dump-autoload --optimize
+
+# Verify artisan exists and is executable
+RUN ls -la artisan && file artisan
+
+# Expose port
 EXPOSE 8000
 
 # Start Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD ["sh", "-c", "echo 'Starting Laravel server...' && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
